@@ -27,6 +27,8 @@ spec:
           value: "4000"
         - name: RABBIT
           value: amqp://test:test@rabbit:5672
+      imagePullSecrets:
+        - name: acr-auth
 ---
 apiVersion: v1
 kind: Service

@@ -21,12 +21,14 @@ spec:
       containers: 
       - name: video-streaming
         image: $CONTAINER_REGISTRY/video-streaming:$VERSION
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: PORT
           value: "4000"
         - name: RABBIT
           value: amqp://test:test@rabbit:5672
+      imagePullSecrets:
+        - name: acr-auth
 ---
 apiVersion: v1
 kind: Service

@@ -21,7 +21,7 @@ spec:
       containers: 
       - name: metadata
         image: $CONTAINER_REGISTRY/metadata:$VERSION
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: PORT
           value: "4000"
@@ -31,6 +31,8 @@ spec:
           value: metadata
         - name: RABBIT
           value: amqp://test:test@rabbit:5672
+      imagePullSecrets:
+        - name: acr-auth
 ---
 apiVersion: v1
 kind: Service

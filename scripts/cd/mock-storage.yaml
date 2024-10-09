@@ -21,10 +21,12 @@ spec:
       containers: 
       - name: video-storage
         image: $CONTAINER_REGISTRY/mock-storage:$VERSION
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: PORT
           value: "4000"
+      imagePullSecrets:
+        - name: acr-auth
 ---
 apiVersion: v1
 kind: Service
